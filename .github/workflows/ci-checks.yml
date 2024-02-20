@@ -1,0 +1,37 @@
+name: CI Checks
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint-and-spell-check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Bash linting using shellcheck
+    - name: Lint Bash Scripts
+      uses: ludeeus/action-shellcheck@master
+
+    # Check for trailing whitespaces
+    - name: Check for trailing whitespace
+      run: |
+        if git diff --cached --name-only | xargs grep -n '[[:blank:]]$'; then
+          echo "Error: Trailing whitespace found."
+          exit 1
+        else
+          echo "No trailing whitespace found."
+        fi
+
+    # Spell check using codespell
+    - name: Spell check
+      uses: codespell-project/actions-codespell@master
+      with:
+        skip: .git,*.png,*.jpg,*.gif,*.ttf,*.woff,*.woff2,*.mp4
+        ignore_words_list: seperate,teh
+
+    # Additional checks can be added here
