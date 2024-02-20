@@ -66,7 +66,7 @@ fi
 # Function to check open ports
 check_port() {
     local port=$1
-    if lsof -i:$port &>/dev/null; then
+    if lsof -i:"$port" &>/dev/null; then
         echo "Port $port is open."
     else
         echo "Port $port is not open or in use."
