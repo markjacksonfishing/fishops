@@ -30,10 +30,10 @@ echo "Checking for Node.js..."
 if command -v nvm >/dev/null; then
     echo "nvm is installed."
     node_version=$(nvm current)
-    echo "Node.js version: $node_version"
+    echo "Node.js version: ${node_version}" # Added double quotes here
 elif command -v node >/dev/null; then
     node_version=$(node -v)
-    echo "Node.js is installed directly without nvm: $node_version"
+    echo "Node.js is installed directly without nvm: ${node_version}" # Added double quotes here
 else
     echo "Node.js is missing. nvm is recommended for managing Node.js versions."
 fi
@@ -42,7 +42,7 @@ fi
 echo "Checking for Yarn..."
 if command -v yarn >/dev/null; then
     yarn_version=$(yarn -v)
-    echo "Yarn is installed: $yarn_version"
+    echo "Yarn is installed: ${yarn_version}" # Added double quotes here
 else
     echo "Yarn is missing."
 fi
