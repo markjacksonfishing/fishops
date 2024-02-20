@@ -17,7 +17,7 @@ To get started with these scripts:
 1. Clone the repository to your local machine:
    ```bash
    git clone https://github.com/markjacksonfishing/fishops.git
-```
+   ```
 2. Navigate into the script directory of interest.
 3. Read the script-specific README or comments at the top of each script for usage instructions.
 
